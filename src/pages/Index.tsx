@@ -1,6 +1,6 @@
 import { useTreasureHunt } from '@/hooks/useTreasureHunt';
 import IntroScreen from '@/components/screens/IntroScreen';
-import WakeUpScreen from '@/components/screens/WakeUpScreen';
+
 import GoodMorningScreen from '@/components/screens/GoodMorningScreen';
 import ChristmasTreeScreen from '@/components/screens/ChristmasTreeScreen';
 import RulesScreen from '@/components/screens/RulesScreen';
@@ -27,9 +27,7 @@ const Index = () => {
   const renderScreen = () => {
     switch (currentScreen) {
       case 'intro':
-        return <IntroScreen onWakeUp={() => goToScreen('wakeUp')} />;
-      case 'wakeUp':
-        return <WakeUpScreen onNext={goNext} />;
+        return <IntroScreen onWakeUp={() => goToScreen('goodMorning')} />;
       case 'goodMorning':
         return <GoodMorningScreen onNext={goNext} />;
       case 'christmasTree':
@@ -69,7 +67,7 @@ const Index = () => {
       case 'theEnd':
         return <TheEndScreen />;
       default:
-        return <IntroScreen onWakeUp={() => goToScreen('wakeUp')} />;
+        return <IntroScreen onWakeUp={() => goToScreen('goodMorning')} />;
     }
   };
 
