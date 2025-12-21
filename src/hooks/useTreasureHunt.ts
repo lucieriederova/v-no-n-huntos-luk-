@@ -2,7 +2,6 @@ import { useState, useCallback } from 'react';
 
 export type ScreenId = 
   | 'intro'
-  | 'wakeUp'
   | 'goodMorning'
   | 'christmasTree'
   | 'rules'
@@ -20,7 +19,6 @@ export type ScreenId =
 
 const SCREEN_ORDER: ScreenId[] = [
   'intro',
-  'wakeUp',
   'goodMorning',
   'christmasTree',
   'rules',
