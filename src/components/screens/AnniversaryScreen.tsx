@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import FloatingDecorations from '@/components/FloatingDecorations';
 import PinkBox from '@/components/PinkBox';
-import girlPeeking from "@/assets/32-girl-peeking.png";
+import girlPeekingQuestion from "@/assets/33-girl-peeking-question.png";
 
 interface AnniversaryScreenProps {
   onCorrect: () => void;
@@ -31,29 +31,15 @@ const AnniversaryScreen = ({ onCorrect, validateAnswer }: AnniversaryScreenProps
 
   return (
     <div className="screen-container">
-      <FloatingDecorations variant="candy" />
+      <FloatingDecorations variant="full" />
       
-      <div className="flex flex-col items-center justify-center gap-4 animate-slide-up">
-        <img 
-          src={girlPeeking} 
-          alt="Holka přemýšlí" 
-          className="w-40 h-40 object-contain"
-        />
-        
-        <PinkBox className="text-center max-w-sm">
-          <h1 className="text-3xl font-display text-foreground mb-3">
-            Hádanka o nás! 💕
-          </h1>
-          <p className="text-muted-foreground mb-4">
-            Kolik dní jsme spolu?
+      <div className="flex items-center justify-center gap-4 animate-slide-up">
+        <PinkBox className="text-center max-w-md relative">
+          <p className="text-2xl font-display text-foreground/70 leading-relaxed mb-6">
+            dny kolik jsme spolu - kolik dnů nam chybí do výročí + kolik dnů od naši prvního (školního) setkani =
           </p>
-          <div className="bg-secondary/50 rounded-2xl p-4 mb-4">
-            <p className="text-lg">
-              (Spočítej od našeho výročí do dneška!)
-            </p>
-          </div>
           
-          <div className={`flex gap-2 ${shake ? 'animate-wiggle' : ''}`}>
+          <div className={`${shake ? 'animate-wiggle' : ''}`}>
             <input
               type="text"
               value={answer}
@@ -62,32 +48,28 @@ const AnniversaryScreen = ({ onCorrect, validateAnswer }: AnniversaryScreenProps
                 setError(false);
               }}
               onKeyDown={handleKeyDown}
-              placeholder="Počet dní..."
+              placeholder=""
               maxLength={10}
-              className={`
-                flex-1 px-4 py-3 rounded-full text-center text-lg
-                border-2 bg-background
-                focus:outline-none focus:ring-2 focus:ring-primary
-                ${error ? 'border-destructive' : 'border-input'}
-              `}
-            />
-            <button
-              onClick={handleSubmit}
               className="
-                bg-primary text-primary-foreground 
-                px-6 py-3 rounded-full font-medium
-                hover:bg-primary/90 transition-colors
+                w-full px-6 py-4 rounded-2xl text-center text-xl
+                bg-secondary/30 border-0
+                focus:outline-none focus:ring-2 focus:ring-primary/50
+                shadow-[0_4px_20px_rgba(236,72,153,0.3)]
               "
-            >
-              ✓
-            </button>
+            />
           </div>
           {error && (
             <p className="text-destructive text-sm mt-2">
-              Zkus to znovu, lásko! 💕
+              Zkus to znovu! 💕
             </p>
           )}
         </PinkBox>
+        
+        <img 
+          src={girlPeekingQuestion} 
+          alt="Holka přemýšlí" 
+          className="w-48 h-64 object-contain"
+        />
       </div>
     </div>
   );

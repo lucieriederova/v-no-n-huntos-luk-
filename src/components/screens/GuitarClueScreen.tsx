@@ -10,30 +10,19 @@ interface GuitarClueScreenProps {
 const GuitarClueScreen = ({ onNext }: GuitarClueScreenProps) => {
   return (
     <div className="screen-container">
-      <FloatingDecorations variant="gifts" />
+      <FloatingDecorations variant="full" />
       
-      <div className="flex flex-col items-center justify-center gap-6 animate-slide-up">
-        <img 
-          src={girlClapping} 
-          alt="Nadšená holka" 
-          className="w-48 h-48 object-contain bounce-gentle"
-        />
-        
-        <PinkBox className="text-center max-w-sm">
-          <h1 className="text-3xl font-display text-foreground mb-3">
-            Poslední dárek! 🎸
-          </h1>
-          <p className="text-lg text-muted-foreground mb-4">
-            Najdeš ho tam, kde vznikají...
+      <div className="flex flex-col items-center justify-center gap-4 animate-slide-up">
+        <PinkBox className="text-center max-w-md">
+          <p className="text-2xl font-display text-foreground/70 leading-relaxed mb-6">
+            your last gift is behind the guitar covers in our room
           </p>
-          <div className="bg-secondary/50 rounded-2xl p-4">
-            <p className="text-2xl font-display text-primary">
-              🎵 Kytarové covery! 🎵
-            </p>
-          </div>
-          <p className="text-sm text-muted-foreground mt-3">
-            Běž se podívat!
-          </p>
+          
+          <img 
+            src={girlClapping} 
+            alt="Nadšená holka" 
+            className="w-44 h-44 object-contain mx-auto"
+          />
         </PinkBox>
         
         <NavigationArrow onClick={onNext} />
