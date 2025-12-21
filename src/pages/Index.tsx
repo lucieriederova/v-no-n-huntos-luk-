@@ -61,20 +61,35 @@ const Index = () => {
       case 'giftFound2':
         return <GiftFoundScreen onNext={goNext} giftNumber={2} />;
       case 'howMuchLove':
+        return <HowMuchLoveScreen onNext={goNext} />;
+      case 'loveAnswer1':
         return (
-          <HowMuchLoveScreen 
-            onCorrect={() => goToScreen('loveAnswer1')} 
-            validateAnswer={validateLoveAnswer}
+          <LoveAnswer1Screen 
+            onSelectAnswer={(answer) => {
+              if (answer === 'vic') {
+                goToScreen('guitarClue');
+              } else {
+                goToScreen('loveAnswer2');
+              }
+            }} 
           />
         );
-      case 'loveAnswer1':
-        return <LoveAnswer1Screen onNext={goNext} />;
       case 'loveAnswer2':
-        return <LoveAnswer2Screen onNext={goNext} />;
+        return (
+          <LoveAnswer2Screen 
+            onSelectAnswer={(answer) => {
+              if (answer === 'vic') {
+                goToScreen('guitarClue');
+              } else {
+                goToScreen('loveAnswer1');
+              }
+            }} 
+          />
+        );
       case 'guitarClue':
         return <GuitarClueScreen onNext={goNext} />;
       case 'finalMessage':
-        return <FinalMessageScreen onNext={goNext} />;
+        return <FinalMessageScreen />;
       case 'theEnd':
         return <TheEndScreen />;
       default:

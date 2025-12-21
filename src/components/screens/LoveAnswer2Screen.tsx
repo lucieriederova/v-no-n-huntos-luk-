@@ -1,34 +1,56 @@
 import FloatingDecorations from '@/components/FloatingDecorations';
-import NavigationArrow from '@/components/NavigationArrow';
 import PinkBox from '@/components/PinkBox';
-import girlJumping from "@/assets/34-girl-jumping.png";
+import ribbon from "@/assets/36-pink-ribbon.png";
+import bow from "@/assets/37-pink-bow.png";
+import girlPeekingQuestion from "@/assets/33-girl-peeking-question.png";
 
 interface LoveAnswer2ScreenProps {
-  onNext: () => void;
+  onSelectAnswer: (answer: 'moc' | 'vic') => void;
 }
 
-const LoveAnswer2Screen = ({ onNext }: LoveAnswer2ScreenProps) => {
+const LoveAnswer2Screen = ({ onSelectAnswer }: LoveAnswer2ScreenProps) => {
   return (
     <div className="screen-container">
       <FloatingDecorations variant="full" />
       
-      <div className="flex flex-col items-center justify-center gap-6 animate-slide-up">
-        <PinkBox className="text-center max-w-sm">
-          <h1 className="text-4xl font-display text-foreground mb-2">
-            ještě víííc! 💕💕💕
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            Správně! To je naše!
-          </p>
+      <div className="flex items-center justify-center gap-4 animate-slide-up">
+        <PinkBox className="text-center max-w-md min-h-[300px] flex flex-col items-center justify-center relative">
+          {/* Ribbon with bow decoration */}
+          <div className="relative w-full flex items-center justify-center mb-8">
+            <img 
+              src={ribbon} 
+              alt="Stuha" 
+              className="w-full h-12 object-contain"
+            />
+            <img 
+              src={bow} 
+              alt="Mašle" 
+              className="absolute w-20 h-20 object-contain"
+            />
+          </div>
+          
+          {/* Two answer options */}
+          <div className="flex justify-between w-full px-8 mt-4">
+            <button
+              onClick={() => onSelectAnswer('moc')}
+              className="text-2xl font-display text-foreground/70 hover:text-primary transition-colors"
+            >
+              moooc
+            </button>
+            <button
+              onClick={() => onSelectAnswer('vic')}
+              className="text-2xl font-display text-foreground/70 hover:text-primary transition-colors"
+            >
+              ještě víc!
+            </button>
+          </div>
         </PinkBox>
         
         <img 
-          src={girlJumping} 
-          alt="Nadšená holka" 
-          className="w-56 h-56 object-contain bounce-gentle"
+          src={girlPeekingQuestion} 
+          alt="Holka nakukuje s otázkou" 
+          className="w-40 h-56 object-contain"
         />
-        
-        <NavigationArrow onClick={onNext} />
       </div>
     </div>
   );

@@ -1,39 +1,31 @@
 import FloatingDecorations from '@/components/FloatingDecorations';
-import NavigationArrow from '@/components/NavigationArrow';
 import PinkBox from '@/components/PinkBox';
-import girlWaving from "@/assets/29-girl-waving.png";
+import girlJumping from "@/assets/34-girl-jumping.png";
 
-interface FinalMessageScreenProps {
-  onNext: () => void;
-}
-
-const FinalMessageScreen = ({ onNext }: FinalMessageScreenProps) => {
+const FinalMessageScreen = () => {
   return (
     <div className="screen-container">
       <FloatingDecorations variant="full" />
       
-      <div className="flex flex-col items-center justify-center gap-6 animate-slide-up">
-        <PinkBox className="text-center max-w-sm">
-          <h1 className="text-3xl font-display text-foreground mb-4">
-            Všechny dárky nalezeny! 🎉
-          </h1>
-          <p className="text-lg text-muted-foreground mb-4">
-            Gratuluju, lásko! Zvládla jsi celý hon za pokladem!
+      <div className="flex flex-col items-center justify-center gap-4 animate-slide-up">
+        <PinkBox className="text-center max-w-md">
+          <p className="text-2xl font-display text-foreground/70 leading-relaxed mb-4">
+            i hope you liked the gifts
           </p>
-          <div className="bg-secondary/50 rounded-2xl p-4">
-            <p className="text-xl font-display text-primary">
-              Miluju tě nejvíc na světě! 💕
-            </p>
-          </div>
+          <p className="text-2xl font-display text-foreground/70 mb-6">
+            love you
+          </p>
+          
+          <img 
+            src={girlJumping} 
+            alt="Nadšená holka" 
+            className="w-40 h-40 object-contain mx-auto mb-6"
+          />
+          
+          <p className="text-xl font-display text-foreground/70 uppercase">
+            ps: I AM SO EXCITED FOR HUGGIES AND KISSES
+          </p>
         </PinkBox>
-        
-        <img 
-          src={girlWaving} 
-          alt="Holka mává" 
-          className="w-48 h-48 object-contain floating"
-        />
-        
-        <NavigationArrow onClick={onNext} />
       </div>
     </div>
   );
