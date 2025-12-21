@@ -1,7 +1,8 @@
 import FloatingDecorations from '@/components/FloatingDecorations';
 import NavigationArrow from '@/components/NavigationArrow';
 import PinkBox from '@/components/PinkBox';
-import girlWaving from "@/assets/29-girl-waving.png";
+import girlSleeping from "@/assets/18-girl-sleeping.png";
+import dreamBubble from "@/assets/19-dream-bubble.png";
 
 interface WakeUpScreenProps {
   onNext: () => void;
@@ -10,22 +11,25 @@ interface WakeUpScreenProps {
 const WakeUpScreen = ({ onNext }: WakeUpScreenProps) => {
   return (
     <div className="screen-container">
-      <FloatingDecorations variant="minimal" />
+      <FloatingDecorations variant="full" />
       
-      <div className="flex flex-col items-center justify-center gap-6 animate-slide-up">
-        <img 
-          src={girlWaving} 
-          alt="Holka mává" 
-          className="w-56 h-56 object-contain floating"
-        />
-        
-        <PinkBox className="text-center max-w-sm">
-          <h1 className="text-4xl font-display text-foreground mb-2">
-            Dobré ráno, lásko! 🌸
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            Už je čas vstávat...
-          </p>
+      <div className="flex items-center justify-center gap-4 animate-slide-up">
+        <PinkBox className="text-center max-w-md min-h-[400px] flex flex-col items-center justify-end pb-8 relative">
+          {/* Dream bubble with couple */}
+          <div className="absolute top-8 left-1/2 -translate-x-1/2">
+            <img 
+              src={dreamBubble} 
+              alt="Sen o nás" 
+              className="w-48 h-48 object-contain floating"
+            />
+          </div>
+          
+          {/* Girl waking up at bottom */}
+          <img 
+            src={girlSleeping} 
+            alt="Holka se probouzí" 
+            className="w-48 h-48 object-contain"
+          />
         </PinkBox>
         
         <NavigationArrow onClick={onNext} />

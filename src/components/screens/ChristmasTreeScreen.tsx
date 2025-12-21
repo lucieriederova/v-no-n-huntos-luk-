@@ -10,23 +10,16 @@ interface ChristmasTreeScreenProps {
 const ChristmasTreeScreen = ({ onNext }: ChristmasTreeScreenProps) => {
   return (
     <div className="screen-container">
-      <FloatingDecorations variant="gifts" />
+      <FloatingDecorations variant="full" />
       
-      <div className="flex flex-col items-center justify-center gap-4 animate-slide-up">
-        <PinkBox className="text-center max-w-sm">
-          <h1 className="text-3xl font-display text-foreground mb-2">
-            Pod stromečkem něco je... 🎁
-          </h1>
-          <p className="text-muted-foreground">
-            Ale počkat, to není jen tak obyčejný dárek!
-          </p>
+      <div className="flex items-center justify-center gap-4 animate-slide-up">
+        <PinkBox className="text-center max-w-lg min-h-[500px] flex items-end justify-center pb-4">
+          <img 
+            src={girlTree} 
+            alt="Holka u stromečku" 
+            className="w-full max-w-md object-contain"
+          />
         </PinkBox>
-        
-        <img 
-          src={girlTree} 
-          alt="Holka u stromečku" 
-          className="w-72 h-72 object-contain"
-        />
         
         <NavigationArrow onClick={onNext} />
       </div>
