@@ -1,13 +1,91 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useTreasureHunt } from '@/hooks/useTreasureHunt';
+import IntroScreen from '@/components/screens/IntroScreen';
+import WakeUpScreen from '@/components/screens/WakeUpScreen';
+import GoodMorningScreen from '@/components/screens/GoodMorningScreen';
+import ChristmasTreeScreen from '@/components/screens/ChristmasTreeScreen';
+import RulesScreen from '@/components/screens/RulesScreen';
+import SudokuScreen from '@/components/screens/SudokuScreen';
+import KitchenClueScreen from '@/components/screens/KitchenClueScreen';
+import GiftFoundScreen from '@/components/screens/GiftFoundScreen';
+import AnniversaryScreen from '@/components/screens/AnniversaryScreen';
+import SisterRoomScreen from '@/components/screens/SisterRoomScreen';
+import HowMuchLoveScreen from '@/components/screens/HowMuchLoveScreen';
+import LoveAnswer1Screen from '@/components/screens/LoveAnswer1Screen';
+import LoveAnswer2Screen from '@/components/screens/LoveAnswer2Screen';
+import GuitarClueScreen from '@/components/screens/GuitarClueScreen';
+import FinalMessageScreen from '@/components/screens/FinalMessageScreen';
+import TheEndScreen from '@/components/screens/TheEndScreen';
 
 const Index = () => {
+  const {
+    currentScreen,
+    goToScreen,
+    goNext,
+    validateSudokuAnswer,
+    validateAnniversaryAnswer,
+    validateLoveAnswer,
+  } = useTreasureHunt();
+
+  const renderScreen = () => {
+    switch (currentScreen) {
+      case 'intro':
+        return <IntroScreen onWakeUp={() => goToScreen('wakeUp')} />;
+      case 'wakeUp':
+        return <WakeUpScreen onNext={goNext} />;
+      case 'goodMorning':
+        return <GoodMorningScreen onNext={goNext} />;
+      case 'christmasTree':
+        return <ChristmasTreeScreen onNext={goNext} />;
+      case 'rules':
+        return <RulesScreen onNext={goNext} />;
+      case 'sudoku':
+        return (
+          <SudokuScreen 
+            onCorrect={() => goToScreen('kitchenClue')} 
+            validateAnswer={validateSudokuAnswer}
+          />
+        );
+      case 'kitchenClue':
+        return <KitchenClueScreen onNext={goNext} />;
+      case 'giftFound1':
+        return <GiftFoundScreen onNext={goNext} giftNumber={1} />;
+      case 'anniversary':
+        return (
+          <AnniversaryScreen 
+            onCorrect={() => goToScreen('sisterRoom')} 
+            validateAnswer={validateAnniversaryAnswer}
+          />
+        );
+      case 'sisterRoom':
+        return <SisterRoomScreen onNext={goNext} />;
+      case 'giftFound2':
+        return <GiftFoundScreen onNext={goNext} giftNumber={2} />;
+      case 'howMuchLove':
+        return (
+          <HowMuchLoveScreen 
+            onCorrect={() => goToScreen('loveAnswer1')} 
+            validateAnswer={validateLoveAnswer}
+          />
+        );
+      case 'loveAnswer1':
+        return <LoveAnswer1Screen onNext={goNext} />;
+      case 'loveAnswer2':
+        return <LoveAnswer2Screen onNext={goNext} />;
+      case 'guitarClue':
+        return <GuitarClueScreen onNext={goNext} />;
+      case 'finalMessage':
+        return <FinalMessageScreen onNext={goNext} />;
+      case 'theEnd':
+        return <TheEndScreen />;
+      default:
+        return <IntroScreen onWakeUp={() => goToScreen('wakeUp')} />;
+    }
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <main className="font-body">
+      {renderScreen()}
+    </main>
   );
 };
 
