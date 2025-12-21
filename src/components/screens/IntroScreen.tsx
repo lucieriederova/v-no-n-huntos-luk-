@@ -14,8 +14,8 @@ const IntroScreen = ({ onWakeUp }: IntroScreenProps) => {
       
       <div className="flex items-center justify-center gap-4 animate-fade-in">
         <PinkBox className="text-center max-w-md min-h-[400px] flex flex-col items-center justify-end pb-8 relative">
-          {/* Dream bubble with couple - cca 40% šířky boxu */}
-          <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[55%]">
+          {/* Dream bubble - cca 50% šířky boxu */}
+          <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[50%]">
             <img 
               src={dreamBubble} 
               alt="Sen o nás" 
@@ -23,19 +23,12 @@ const IntroScreen = ({ onWakeUp }: IntroScreenProps) => {
             />
           </div>
           
-          {/* Two sleeping girls at bottom - každá cca 35% šířky boxu */}
-          <div className="flex items-end justify-center gap-2 w-full">
-            <img 
-              src={girlSleeping} 
-              alt="Spící holka 1" 
-              className="w-[40%] object-contain"
-            />
-            <img 
-              src={girlSleeping} 
-              alt="Spící holka 2" 
-              className="w-[40%] object-contain -scale-x-100"
-            />
-          </div>
+          {/* One sleeping girl at bottom - cca 50% šířky boxu */}
+          <img 
+            src={girlSleeping} 
+            alt="Spící holka" 
+            className="w-[50%] object-contain"
+          />
         </PinkBox>
         
         {/* Wake me up button on the right side */}
