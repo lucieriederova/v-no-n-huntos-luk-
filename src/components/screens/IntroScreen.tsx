@@ -1,4 +1,5 @@
 import FloatingDecorations from '@/components/FloatingDecorations';
+import PinkBox from '@/components/PinkBox';
 import girlSleeping from "@/assets/18-girl-sleeping.png";
 import dreamBubble from "@/assets/19-dream-bubble.png";
 
@@ -9,38 +10,41 @@ interface IntroScreenProps {
 const IntroScreen = ({ onWakeUp }: IntroScreenProps) => {
   return (
     <div className="screen-container">
-      <FloatingDecorations variant="minimal" />
+      <FloatingDecorations variant="full" />
       
-      <div className="relative flex flex-col items-center justify-center animate-fade-in">
-        {/* Dream bubble */}
-        <div className="absolute -top-16 right-0 floating-slow">
+      <div className="flex items-center justify-center gap-4 animate-fade-in">
+        <PinkBox className="text-center max-w-md min-h-[400px] flex flex-col items-center justify-end pb-8 relative">
+          {/* Dream bubble with couple */}
+          <div className="absolute top-8 left-1/2 -translate-x-1/2">
+            <img 
+              src={dreamBubble} 
+              alt="Sen o nás" 
+              className="w-48 h-48 object-contain floating"
+            />
+          </div>
+          
+          {/* Sleeping girl at bottom */}
           <img 
-            src={dreamBubble} 
-            alt="Sen" 
-            className="w-24 h-24 object-contain"
+            src={girlSleeping} 
+            alt="Spící holka" 
+            className="w-48 h-48 object-contain"
           />
-        </div>
+        </PinkBox>
         
-        {/* Sleeping girl */}
-        <img 
-          src={girlSleeping} 
-          alt="Spící holka" 
-          className="w-64 h-64 object-contain mb-8"
-        />
-        
-        {/* Wake up button */}
+        {/* Wake me up button on the right side */}
         <button
           onClick={onWakeUp}
           className="
-            bg-primary text-primary-foreground 
-            px-8 py-4 rounded-full text-xl font-display
-            shadow-lg hover:shadow-xl
+            bg-gradient-to-b from-white/80 to-pink-100/80
+            backdrop-blur-sm
+            px-6 py-4 rounded-full text-lg font-display
+            text-primary shadow-lg hover:shadow-xl
             transition-all duration-300 
             hover:scale-105 active:scale-95
-            animate-bounce
+            border border-primary/20
           "
         >
-          Probuď mě! 💕
+          wake me up
         </button>
       </div>
     </div>

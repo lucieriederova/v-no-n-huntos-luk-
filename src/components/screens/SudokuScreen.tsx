@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import FloatingDecorations from '@/components/FloatingDecorations';
+import NavigationArrow from '@/components/NavigationArrow';
 import PinkBox from '@/components/PinkBox';
 import sudokuImg from "@/assets/30-sudoku.png";
-import girlQuestion from "@/assets/33-girl-peeking-question.png";
+import girlStanding from "@/assets/29-girl-waving.png";
 
 interface SudokuScreenProps {
   onCorrect: () => void;
@@ -32,24 +33,21 @@ const SudokuScreen = ({ onCorrect, validateAnswer }: SudokuScreenProps) => {
 
   return (
     <div className="screen-container">
-      <FloatingDecorations variant="minimal" />
+      <FloatingDecorations variant="full" />
       
-      <div className="flex flex-col items-center justify-center gap-4 animate-slide-up">
-        <PinkBox className="text-center max-w-sm">
-          <h1 className="text-3xl font-display text-foreground mb-2">
-            Sudoku výzva! 🧩
-          </h1>
-          <p className="text-sm text-muted-foreground mb-4">
-            Vyřeš sudoku a zadej čísla z růžových bublin (zleva doprava, shora dolů)
+      <div className="flex items-center justify-center gap-4 animate-slide-up">
+        <PinkBox className="text-center max-w-lg relative">
+          <p className="text-lg font-display text-foreground/70 leading-relaxed mb-4 uppercase">
+            SOLVE THIS SUDOKU AND WRITE THE COLORED NUMBERS INTO THE BOX (FROM THE BIGGEST
           </p>
           
           <img 
             src={sudokuImg} 
             alt="Sudoku" 
-            className="w-full max-w-xs mx-auto rounded-xl shadow-md mb-4"
+            className="w-full max-w-sm mx-auto mb-4"
           />
           
-          <div className={`flex gap-2 ${shake ? 'animate-wiggle' : ''}`}>
+          <div className={`${shake ? 'animate-wiggle' : ''}`}>
             <input
               type="text"
               value={answer}
@@ -58,38 +56,31 @@ const SudokuScreen = ({ onCorrect, validateAnswer }: SudokuScreenProps) => {
                 setError(false);
               }}
               onKeyDown={handleKeyDown}
-              placeholder="Zadej kód..."
+              placeholder=""
               maxLength={10}
-              className={`
-                flex-1 px-4 py-3 rounded-full text-center text-lg
-                border-2 bg-background
-                focus:outline-none focus:ring-2 focus:ring-primary
-                ${error ? 'border-destructive' : 'border-input'}
-              `}
-            />
-            <button
-              onClick={handleSubmit}
               className="
-                bg-primary text-primary-foreground 
-                px-6 py-3 rounded-full font-medium
-                hover:bg-primary/90 transition-colors
+                w-full max-w-xs mx-auto px-6 py-4 rounded-2xl text-center text-xl
+                bg-secondary/30 border-0
+                focus:outline-none focus:ring-2 focus:ring-primary/50
+                shadow-[0_4px_20px_rgba(236,72,153,0.3)]
               "
-            >
-              ✓
-            </button>
+            />
           </div>
           {error && (
             <p className="text-destructive text-sm mt-2">
-              To není správně, zkus to znovu! 💕
+              Zkus to znovu! 💕
             </p>
           )}
+          
+          {/* Girl on the right side */}
+          <img 
+            src={girlStanding} 
+            alt="Holka" 
+            className="absolute -right-20 bottom-0 w-36 h-52 object-contain"
+          />
         </PinkBox>
         
-        <img 
-          src={girlQuestion} 
-          alt="Holka přemýšlí" 
-          className="w-32 h-32 object-contain floating"
-        />
+        <NavigationArrow onClick={handleSubmit} />
       </div>
     </div>
   );
