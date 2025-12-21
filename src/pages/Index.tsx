@@ -10,8 +10,7 @@ import GiftFoundScreen from '@/components/screens/GiftFoundScreen';
 import AnniversaryScreen from '@/components/screens/AnniversaryScreen';
 import SisterRoomScreen from '@/components/screens/SisterRoomScreen';
 import HowMuchLoveScreen from '@/components/screens/HowMuchLoveScreen';
-import LoveAnswer1Screen from '@/components/screens/LoveAnswer1Screen';
-import LoveAnswer2Screen from '@/components/screens/LoveAnswer2Screen';
+import LoveSliderScreen from '@/components/screens/LoveSliderScreen';
 import GuitarClueScreen from '@/components/screens/GuitarClueScreen';
 import FinalMessageScreen from '@/components/screens/FinalMessageScreen';
 import TheEndScreen from '@/components/screens/TheEndScreen';
@@ -23,7 +22,6 @@ const Index = () => {
     goNext,
     validateSudokuAnswer,
     validateAnniversaryAnswer,
-    validateLoveAnswer,
   } = useTreasureHunt();
 
   const renderScreen = () => {
@@ -62,30 +60,8 @@ const Index = () => {
         return <GiftFoundScreen onNext={goNext} giftNumber={2} />;
       case 'howMuchLove':
         return <HowMuchLoveScreen onNext={goNext} />;
-      case 'loveAnswer1':
-        return (
-          <LoveAnswer1Screen 
-            onSelectAnswer={(answer) => {
-              if (answer === 'vic') {
-                goToScreen('guitarClue');
-              } else {
-                goToScreen('loveAnswer2');
-              }
-            }} 
-          />
-        );
-      case 'loveAnswer2':
-        return (
-          <LoveAnswer2Screen 
-            onSelectAnswer={(answer) => {
-              if (answer === 'vic') {
-                goToScreen('guitarClue');
-              } else {
-                goToScreen('loveAnswer1');
-              }
-            }} 
-          />
-        );
+      case 'loveSlider':
+        return <LoveSliderScreen onComplete={() => goToScreen('guitarClue')} />;
       case 'guitarClue':
         return <GuitarClueScreen onNext={goNext} />;
       case 'finalMessage':

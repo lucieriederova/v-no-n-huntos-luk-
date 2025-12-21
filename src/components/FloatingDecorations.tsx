@@ -13,30 +13,46 @@ interface FloatingDecorationsProps {
 }
 
 const FloatingDecorations = ({ variant = 'full' }: FloatingDecorationsProps) => {
+  // Dekorace jsou cca 5-8% velikosti obrazovky podle wireframu
   const decorations = {
     full: [
-      { src: snowflake, className: "top-4 left-4 w-12 h-12 floating", delay: "0s" },
-      { src: candy, className: "top-8 right-6 w-10 h-10 floating-slow", delay: "0.5s" },
-      { src: ornament, className: "bottom-20 left-6 w-10 h-10 floating", delay: "1s" },
-      { src: giftPink, className: "bottom-32 right-4 w-14 h-14 floating-slow", delay: "0.3s" },
-      { src: candyCane, className: "top-1/4 left-2 w-8 h-8 floating-fast", delay: "0.7s" },
-      { src: ornamentBlue, className: "top-1/3 right-3 w-9 h-9 floating", delay: "1.2s" },
-      { src: pinkBow, className: "bottom-40 left-8 w-10 h-10 floating-slow", delay: "0.4s" },
+      // Levá strana - horní část (cca 5% od okraje)
+      { src: snowflake, className: "top-[5%] left-[3%] w-[6%] min-w-12 aspect-square floating", delay: "0s" },
+      { src: candy, className: "top-[8%] left-[12%] w-[5%] min-w-10 aspect-square floating-slow", delay: "0.5s" },
+      
+      // Pravá strana - horní část
+      { src: snowflake, className: "top-[5%] right-[3%] w-[6%] min-w-12 aspect-square floating", delay: "0.3s" },
+      { src: candy, className: "top-[10%] right-[12%] w-[5%] min-w-10 aspect-square floating-slow", delay: "0.7s" },
+      
+      // Levá strana - střed
+      { src: ornament, className: "top-[30%] left-[2%] w-[5%] min-w-10 aspect-square floating", delay: "1s" },
+      { src: snowflake, className: "top-[45%] left-[8%] w-[6%] min-w-12 aspect-square floating-slow", delay: "0.4s" },
+      
+      // Pravá strana - střed
+      { src: ornamentBlue, className: "top-[35%] right-[5%] w-[5%] min-w-10 aspect-square floating", delay: "1.2s" },
+      
+      // Levá strana - spodní část
+      { src: pinkBow, className: "bottom-[35%] left-[3%] w-[5%] min-w-10 aspect-square floating-slow", delay: "0.6s" },
+      { src: giftPink, className: "bottom-[10%] left-[5%] w-[8%] min-w-16 aspect-square floating", delay: "0.2s" },
+      
+      // Pravá strana - spodní část
+      { src: ornament, className: "bottom-[25%] right-[3%] w-[5%] min-w-10 aspect-square floating", delay: "0.8s" },
+      { src: giftGreen, className: "bottom-[8%] right-[5%] w-[7%] min-w-14 aspect-square floating-slow", delay: "0.3s" },
     ],
     minimal: [
-      { src: snowflake, className: "top-6 right-6 w-10 h-10 floating", delay: "0s" },
-      { src: pinkBow, className: "bottom-24 left-4 w-8 h-8 floating-slow", delay: "0.5s" },
+      { src: snowflake, className: "top-[6%] right-[6%] w-[6%] min-w-10 aspect-square floating", delay: "0s" },
+      { src: pinkBow, className: "bottom-[15%] left-[4%] w-[5%] min-w-8 aspect-square floating-slow", delay: "0.5s" },
     ],
     gifts: [
-      { src: giftPink, className: "bottom-20 left-4 w-16 h-16 floating", delay: "0s" },
-      { src: giftGreen, className: "bottom-32 right-6 w-14 h-14 floating-slow", delay: "0.3s" },
-      { src: giftBlue, className: "top-20 right-4 w-12 h-12 floating", delay: "0.6s" },
-      { src: pinkBow, className: "top-8 left-6 w-10 h-10 floating-slow", delay: "0.2s" },
+      { src: giftPink, className: "bottom-[12%] left-[4%] w-[10%] min-w-16 aspect-square floating", delay: "0s" },
+      { src: giftGreen, className: "bottom-[20%] right-[6%] w-[8%] min-w-14 aspect-square floating-slow", delay: "0.3s" },
+      { src: giftBlue, className: "top-[12%] right-[4%] w-[7%] min-w-12 aspect-square floating", delay: "0.6s" },
+      { src: pinkBow, className: "top-[8%] left-[6%] w-[6%] min-w-10 aspect-square floating-slow", delay: "0.2s" },
     ],
     candy: [
-      { src: candy, className: "top-8 left-4 w-10 h-10 floating", delay: "0s" },
-      { src: candyCane, className: "bottom-24 right-6 w-12 h-12 floating-slow", delay: "0.4s" },
-      { src: candy, className: "top-1/3 right-4 w-8 h-8 floating-fast", delay: "0.8s" },
+      { src: candy, className: "top-[8%] left-[4%] w-[6%] min-w-10 aspect-square floating", delay: "0s" },
+      { src: candyCane, className: "bottom-[15%] right-[6%] w-[7%] min-w-12 aspect-square floating-slow", delay: "0.4s" },
+      { src: candy, className: "top-[33%] right-[4%] w-[5%] min-w-8 aspect-square floating-fast", delay: "0.8s" },
     ],
   };
 
@@ -49,7 +65,7 @@ const FloatingDecorations = ({ variant = 'full' }: FloatingDecorationsProps) => 
           key={index}
           src={item.src}
           alt=""
-          className={`absolute pointer-events-none opacity-80 ${item.className}`}
+          className={`absolute pointer-events-none opacity-90 ${item.className}`}
           style={{ animationDelay: item.delay }}
         />
       ))}

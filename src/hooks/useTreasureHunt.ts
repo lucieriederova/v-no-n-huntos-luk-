@@ -12,8 +12,7 @@ export type ScreenId =
   | 'anniversary'
   | 'sisterRoom'
   | 'howMuchLove'
-  | 'loveAnswer1'
-  | 'loveAnswer2'
+  | 'loveSlider'
   | 'guitarClue'
   | 'giftFound2'
   | 'finalMessage'
@@ -32,8 +31,7 @@ const SCREEN_ORDER: ScreenId[] = [
   'sisterRoom',
   'giftFound2',
   'howMuchLove',
-  'loveAnswer1',
-  'loveAnswer2',
+  'loveSlider',
   'guitarClue',
   'finalMessage',
   'theEnd',
@@ -77,19 +75,6 @@ export const useTreasureHunt = () => {
     return answer.trim() === '324';
   }, []);
 
-  const validateLoveAnswer = useCallback((answer: string): boolean => {
-    const normalized = answer.toLowerCase().trim()
-      .replace(/í/g, 'i')
-      .replace(/á/g, 'a')
-      .replace(/é/g, 'e')
-      .replace(/ě/g, 'e')
-      .replace(/ý/g, 'y')
-      .replace(/ú/g, 'u')
-      .replace(/ů/g, 'u');
-    
-    return normalized.includes('jeste') && normalized.includes('vic');
-  }, []);
-
   return {
     currentScreen,
     goToScreen,
@@ -99,6 +84,5 @@ export const useTreasureHunt = () => {
     isPuzzleSolved,
     validateSudokuAnswer,
     validateAnniversaryAnswer,
-    validateLoveAnswer,
   };
 };
