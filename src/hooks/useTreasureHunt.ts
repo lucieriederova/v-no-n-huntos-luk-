@@ -70,7 +70,7 @@ export const useTreasureHunt = () => {
   }, []);
 
   const validateAnniversaryAnswer = useCallback((answer: string): boolean => {
-    return answer.trim() === '238';
+    return answer.trim() === '603';
   }, []);
 
   return {
