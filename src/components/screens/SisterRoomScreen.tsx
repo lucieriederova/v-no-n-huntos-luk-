@@ -2,6 +2,7 @@ import FloatingDecorations from '@/components/FloatingDecorations';
 import NavigationArrow from '@/components/NavigationArrow';
 import PinkBox from '@/components/PinkBox';
 import girlClapping from "@/assets/35-girl-clapping.png";
+import FloatingDog from '../FloatingDog';
 
 interface SisterRoomScreenProps {
   onNext: () => void;
@@ -11,6 +12,7 @@ const SisterRoomScreen = ({ onNext }: SisterRoomScreenProps) => {
   return (
     <div className="screen-container">
       <FloatingDecorations variant="full" />
+      <FloatingDog />
       
       <div className="flex flex-col items-center justify-center gap-4 animate-slide-up">
         <PinkBox className="text-center max-w-md">
@@ -29,7 +31,11 @@ const SisterRoomScreen = ({ onNext }: SisterRoomScreenProps) => {
           <img 
             src={girlClapping} 
             alt="Nadšená holka" 
-            className="w-40 h-40 object-contain mx-auto mt-4"
+            style={{ 
+              width: '200%', 
+              height: 'auto'
+            }}
+            className="object-contain relative z-10"
           />
         </PinkBox>
         

@@ -23,7 +23,7 @@ const TheEndScreen = () => {
               Přeju ti ty nejkrásnější svátky!
             </p>
             <p className="text-lg text-primary font-display">
-              S láskou, tvůj přítel 💕
+              s láskou, lucka
             </p>
           </PinkBox>
         </div>
@@ -35,7 +35,7 @@ const TheEndScreen = () => {
         />
         
         <p className="text-muted-foreground text-sm animate-pulse">
-          ✨ Konec ✨
+          ✨ konec ✨
         </p>
       </div>
     </div>
